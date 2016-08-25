@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         gravity.speed = 2;
         gravity.temperature = -60;
         gravity.weight = 45;
-        gravity.time = 8;
+        gravity.windspeed = 8;
 
         gravity.showAttributes();
         System.out.println("Increasing speed to 3.");
@@ -38,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Checking the temperature.");
         gravity.checkTemoerature();
         gravity.showAttributes();
-        System.out.println("Rasing weight to 85.");
+        System.out.println("Changing weight to 85.");
         gravity.weight = 85;
         gravity.checkWeight();
         gravity.showAttributes();
-        System.out.println("Changing Time to 12.");
-        gravity.time = 12;
-        gravity.checkTime();
+        System.out.println("Changing windspeed to 12.");
+        gravity.windspeed = 12;
+        gravity.checkWindspeed();
         gravity.showAttributes();
 
 

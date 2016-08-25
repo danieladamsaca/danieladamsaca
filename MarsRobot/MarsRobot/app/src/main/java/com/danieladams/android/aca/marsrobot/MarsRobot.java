@@ -9,11 +9,11 @@ public class MarsRobot {
     int speed;
     float temperature;
     float weight;
-    int time;
+    int windspeed;
 
-void checkTime(){
-    if (time < 10){
-        status = "shut down";
+void checkWindspeed(){
+    if (windspeed > 10){
+        status = "Increasing speed to 5";
         speed = 0;
     }
 }
@@ -37,7 +37,7 @@ void checkWeight(){
         System.out.println("Speed: " + speed);
         System.out.println("Temperature: " + temperature);
         System.out.println("Weight: " + weight);
-        System.out.println("Time: " + time);
+        System.out.println("Windspeed: " + windspeed);
 }
 
 }
