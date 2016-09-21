@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <ImageView
+                android:layout_width="86dp"
+                android:layout_height="50dp"
+                android:id="@+id/imageView"
+                android:src="@mipmap/ic_launcher"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/button"
+                android:layout_alignTop="@+id/radioButtonLondon" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="85dp"/>
+
+            <RadioButton
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:text="London"
+                android:id="@+id/radioButtonLondon"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                android:checked="false"
+                android:clickable="false"
+                android:contextClickable="false" />
+
+            <RadioButton
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:text="Bejing"
+                android:id="@+id/radioButtonBejing"
+                android:layout_below="@+id/radioButtonLondon"
+                android:layout_marginEnd="306dp"
+                android:layout_marginTop="5dp"
+                android:checked="true" />
+
+            <RadioButton
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:text="NeyYork"
+                android:id="@+id/radiobuttonNeyYork"
+                android:layout_below="@+id/radioButtonBejing"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                android:checked="true" />
+
+            <CheckBox
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:text="Transparency"
+                android:id="@+id/checkBoxTransparency"
+                android:layout_marginRight="100dp"
+                android:checked="false"
+                android:layout_above="@+id/radioButtonBejing"
+                android:layout_toEndOf="@+id/radioButtonBejing"
+                android:layout_marginStart="88dp" />
+
+            <CheckBox
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:text="Tint"
+                android:id="@+id/checkBoxTint"
+                android:checked="false"
+                android:layout_above="@+id/radiobuttonNeyYork"
+                android:layout_alignStart="@+id/checkBoxTransparency" />
+
+            <CheckBox
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:text="Re-Size"
+                android:id="@+id/checkBoxReSize"
+                android:checked="false"
+                android:layout_below="@+id/checkBoxTint"
+                android:layout_alignStart="@+id/checkBoxTint" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Switch"
+                android:id="@+id/switch1"
+                android:layout_above="@+id/button"
+                android:layout_alignStart="@+id/checkBoxReSize"
+                android:checked="true" />
+
+            <TextClock
+                android:layout_width="95dp"
+                android:layout_height="65dp"
+                android:id="@+id/textClock"
+                android:layout_below="@+id/button"
+                android:layout_alignEnd="@+id/button" />
+
+            <WebView
+                android:layout_width="85dp"
+                android:layout_height="35dp"
+                android:id="@+id/webView"
+                android:layout_below="@+id/button"
+                android:layout_alignEnd="@+id/checkBoxReSize" />
+
+            <TextView
+                android:layout_width="155dp"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/editView"
+                android:layout_alignTop="@+id/switch1"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

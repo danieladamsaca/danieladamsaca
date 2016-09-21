@@ -14,29 +14,16 @@ public class DayCounter extends AppCompatActivity {
         int yearIn = 2016;
         int monthIn = 1;
 
-
-
-
-
             /*System.out.println(monthIn + "/" + yearIn + " has "
                         + countDays(monthIn, yearIn) + " days.");*/
 
         for (int month = 1; month < 13; month++)
-
         {
             for (int days = 1; days <= countDays(month, yearIn); days++)
 
-
-
             System.out.println(month + "/" + days + "/" + yearIn);
-
         }
     }
-
-
-
-
-
             private int countDays(int month, int year) {
                 int count = -1;
                 switch (month) {

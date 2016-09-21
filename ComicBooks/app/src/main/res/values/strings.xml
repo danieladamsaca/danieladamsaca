@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ComicBooks</string>
+    <string name="title_issue_or_condition">Title, Issue#, or Condition</string>
+    <string name="enter">ENTER</string>
+</resources>

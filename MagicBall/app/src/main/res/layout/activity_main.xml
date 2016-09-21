@@ -41,8 +41,5 @@
     android:layout_margin="@dimen/fab_margin"
     android:src="@drawable/pokeball_48"/>
 
-
-
-
 </android.support.design.widget.CoordinatorLayout>
 

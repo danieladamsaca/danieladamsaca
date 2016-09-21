@@ -20,12 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         mResultText = (TextView) findViewById(R.id.textView2);
         mEnterText = (EditText) findViewById(R.id.editText);
         mConvert =(Button) findViewById(R.id.convert);
-
 
         mConvert.setOnClickListener(new View.OnClickListener() {
 
@@ -34,13 +31,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
-
                 char one;
                 char two;
 
-                one = mEnterText.getText().charAt(0);
+                one = mEnterText.getText().toString().toLowerCase().charAt(0);
                 two = mEnterText.getText().charAt(1);
                 switch (one){
                     case 'o':
@@ -82,9 +76,8 @@ public class MainActivity extends AppCompatActivity {
                         convertedNumber =9L;
                         break;
 
-
-
-
+                    default:
+                        mResultText.setText("Don't know the Number.");
                 }
                 mResultText.setText("The Number is:" + convertedNumber);
 
