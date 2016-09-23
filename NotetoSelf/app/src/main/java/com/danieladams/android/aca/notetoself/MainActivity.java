@@ -3,6 +3,12 @@ package com.danieladams.android.aca.notetoself;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     Animation mAnimFlash;
     Animation mFadeIn;
+
+    int mIdBeep = -1;
+    SoundPool mSp;
 
 
     private NoteAdapter mNoteAdapter;
@@ -39,17 +49,65 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Instantiate our sound pool
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            mSp = new SoundPool.Builder()
+                    .setMaxStreams(5)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            mSp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        try{
+            // Create objects of the 2 required classes
+            AssetManager assetManager = this.getAssets();
+            AssetFileDescriptor descriptor;
+
+            // Load our fx in memory ready for use
+            descriptor = assetManager.openFd("beep.ogg");
+            mIdBeep = mSp.load(descriptor, 0);
+
+        }catch(IOException e){
+            // Print an error message to the console
+            Log.e("error", "failed to load sound files");
+        }
         mNoteAdapter = new NoteAdapter();
 
         ListView listNote = (ListView) findViewById(R.id.listView);
 
         listNote.setAdapter(mNoteAdapter);
 
+        // So we can long click it
+        listNote.setLongClickable(true);
+
+// Now to detect long clicks and delete the note
+        listNote.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> adapter, View view,
+                                           int whichItem, long id) {
+
+                // Ask NoteAdapter to delete this entry
+                mNoteAdapter.deleteNote(whichItem);
+
+                return true;
+            }
+        });
+
         listNote.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int whichItem, long id) {
+
+                if(mSound) {
+                    mSp.play(mIdBeep, 1, 1, 0, 0, 1);
+                }
 
                 Note tempNote = mNoteAdapter.getItem(whichItem);
 
@@ -94,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -107,8 +164,6 @@ public class MainActivity extends AppCompatActivity {
         mNoteAdapter.saveNotes();
 
     }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -130,8 +185,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public class NoteAdapter extends BaseAdapter {
 
-
-
         private JSONSerializer mSerializer;
 
         List<Note> noteList = new ArrayList<Note>();
@@ -140,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
             mSerializer = new JSONSerializer("NoteToSelf.json",
                     MainActivity.this.getApplicationContext());
-
             try {
                 noteList = mSerializer.load();
             } catch (Exception e) {
@@ -149,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
 
         @Override
         public int getCount() {
@@ -174,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
                 view = inflater.inflate(R.layout.listitem, viewGroup,false);
-
 
             }
             TextView txtTitle = (TextView) view.findViewById(R.id.txtTitle);
@@ -210,7 +260,6 @@ public class MainActivity extends AppCompatActivity {
             txtTitle.setText(tempNote.getTitle());
             txtDescription.setText(tempNote.getDescription());
 
-
             return view;
 
         }
@@ -229,6 +278,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Error Saving Notes","", e);
             }
         }
+        public void deleteNote(int n){
+
+            noteList.remove(n);
+            notifyDataSetChanged();
+
+        }
+
 
 
 

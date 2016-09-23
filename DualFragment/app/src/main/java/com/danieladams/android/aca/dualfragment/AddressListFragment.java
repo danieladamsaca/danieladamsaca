@@ -1,16 +1,14 @@
 package com.danieladams.android.aca.dualfragment;
 
+import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
-
-import com.danieladams.android.aca.dualfragment.AddressBook;
-import com.danieladams.android.aca.dualfragment.NameAndAddress;
-import com.danieladams.android.aca.dualfragment.R;
 
 import java.util.ArrayList;
 
@@ -20,6 +18,7 @@ import java.util.ArrayList;
 
 public class AddressListFragment extends ListFragment {
     private ArrayList<NameAndAddress> mNamesAndAddresses;
+    private ActivityComs mActivityComs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +62,27 @@ public class AddressListFragment extends ListFragment {
             return view;
         }
     }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
+  /*
+    activity is a ActivityComs but must
+    still be explicitly cast to the type
+  */
+        mActivityComs = (ActivityComs)activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mActivityComs = null;
+    }
+
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        // pass the position to MainActivity
+
+        mActivityComs.onListItemSelected(position);
+    }
 
     }
