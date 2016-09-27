@@ -83,14 +83,12 @@ public class CaptureFragment extends Fragment{
                             Uri.fromFile(photoFile));
                     startActivityForResult(cameraIntent, CAMERA_REQUEST);
                 }
-
-
             }
         });
 
         return view;
-
     }
+
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -107,6 +105,7 @@ public class CaptureFragment extends Fragment{
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
         return image;
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
@@ -114,15 +113,16 @@ public class CaptureFragment extends Fragment{
             try {
 
                 mImageView.setImageURI(Uri.parse(mImageUri.toString()));
-            }catch(Exception e){
-                Log.e("Error","Uri not set");
+            } catch (Exception e) {
+                Log.e("Error", "Uri not set");
             }
 
-        }else{
+        } else {
             mImageUri = Uri.EMPTY;
         }
     }
-    public void onDestroy(){
+
+    public void onDestroy() {
         super.onDestroy();
 
         // Make sure we don't run out of memory
@@ -130,7 +130,6 @@ public class CaptureFragment extends Fragment{
         bd.getBitmap().recycle();
         mImageView.setImageBitmap(null);
     }
-
 
 }
 
