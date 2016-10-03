@@ -10,58 +10,60 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+
 /**
  * Created by danieladams on 9/15/16.
  */
     public class DialogNewNote extends DialogFragment{
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_new_note, null);
+        final EditText editTitle = (EditText) dialogView.findViewById(R.id.editTitle);
+        final EditText editDescription = (EditText) dialogView.findViewById(R.id.editDescription);
+        final CheckBox checkBoxIdea = (CheckBox) dialogView.findViewById(R.id.checkBoxIdea);
+        final CheckBox checkBoxTodo = (CheckBox) dialogView.findViewById(R.id.checkBoxTodo);
+        final CheckBox checkBoxImportant = (CheckBox) dialogView.findViewById(R.id.checkBoxImportant);
+        Button btnCancel = (Button) dialogView.findViewById(R.id.btnCancel);
+        Button btnOK = (Button) dialogView.findViewById(R.id.btnOK);
 
-            LayoutInflater inflater = getActivity().getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.dialog_new_note,null);
+        builder.setView(dialogView).setTitle("Add a new note");
+        //Handle the cancel
+        // button
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
 
-            final EditText editTitle = (EditText) dialogView.findViewById(R.id.editTitle);
-            final EditText editDescription = (EditText) dialogView.findViewById(R.id.editDescription);
-            final CheckBox checkBoxIdea = (CheckBox) dialogView.findViewById(R.id.checkBoxIdea);
-            final CheckBox checkBoxTodo = (CheckBox) dialogView.findViewById(R.id.checkBoxTodo);
-            final CheckBox checkBoxImportant = (CheckBox) dialogView.findViewById(R.id.checkBoxImportant);
-            Button btnCancel = (Button) dialogView.findViewById(R.id.btnCancel);
-            Button btnOK = (Button) dialogView.findViewById(R.id.btnOK);
+        //Handle the OK Button
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Create a new note
+                Note newNote = new Note();
 
-            builder.setView(dialogView).setMessage("Add a new note");
+                //Set it's variables to match the users entries on the form
+                newNote.setTitle(editTitle.getText().toString());
+                newNote.setDescription(editDescription.getText().toString());
+                newNote.setIdea(checkBoxIdea.isChecked());
+                newNote.setTodo(checkBoxTodo.isChecked());
+                newNote.setImportant(checkBoxImportant.isChecked());
 
-            btnCancel.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    dismiss();
-                }
-            });
+                //Get a reference to Main Activity
+                MainActivity callingActivity = (MainActivity) getActivity();
 
-            btnOK.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                //Pass newNote back to MainActivity
+                callingActivity.createNewNote(newNote);
 
-
-                    Note newNote = new Note();
-
-                    newNote.setTitle(editTitle.getText().toString());
-                    newNote.setDescription(editDescription.getText().toString());
-                    newNote.setIdea(checkBoxIdea.isChecked());
-                    newNote.setTodo(checkBoxTodo.isChecked());
-                    newNote.setImportant(checkBoxImportant.isChecked());
-
-                    MainActivity callingActivity = (MainActivity) getActivity();
-
-                    callingActivity.createNewNote(newNote);
-
-                    dismiss();
-                }
-            });
-            return builder.create();
-        }
+                //Quit the dialog
+                dismiss();
+            }
+        });
+        return builder.create();
     }
-
-
+}

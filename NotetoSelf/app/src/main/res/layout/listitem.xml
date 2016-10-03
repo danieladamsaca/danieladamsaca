@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
+                android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -12,32 +10,25 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/ic_warning_black_24dp"
-        android:contentDescription=""
-        tools:ignore="ContentDescription"/>
+        android:src="@drawable/ic_warning_black_24dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageViewTodo"
-        android:src="@drawable/ic_check_box_black_24dp"
-        android:layout_toEndOf="@+id/imageViewImportant"
+        android:src="@drawable/ic_check_box_outline_blank_black_24dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageViewImportant"
-        android:contentDescription=""
-        tools:ignore="ContentDescription"/>
+        android:layout_toEndOf="@+id/imageViewImportant"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageViewData"
+        android:id="@+id/imageViewIdea"
         android:src="@drawable/ic_wb_incandescent_black_24dp"
-        android:layout_toLeftOf="@+id/imageViewTodo"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/imageViewTodo"
         android:layout_toRightOf="@+id/imageViewTodo"
-        android:layout_toEndOf="@+id/imageViewTodo"
-        tools:ignore="ContentDescription,RtlHardcoded"
-        android:contentDescription=""/>
+        android:layout_toEndOf="@+id/imageViewTodo"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,13 +40,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="New Text"
         android:id="@+id/txtDescription"
         android:layout_below="@+id/txtTitle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:inputType=""/>
-
+        android:layout_alignParentStart="true"/>
 </RelativeLayout>
