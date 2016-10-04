@@ -93,16 +93,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               PhotoActivity photo = new PhotoActivity();
-                photo.show(getFragmentManager(), "");
-
-            }
-        });
-
         listNote.setLongClickable(true);
         listNote.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             public boolean onItemLongClick(AdapterView<?> adapter, View view, int whichItem, long id){
