@@ -269,7 +269,8 @@ class GameView extends SurfaceView implements Runnable {
             mCanvas = mOurHolder.lockCanvas();
 
             // Draw the background color
-            mCanvas.drawColor(Color.argb(139, 139, 0, 0));
+            mCanvas.drawColor(Color.argb(255, 255, 65, 182));
+
 
             // Choose the brush color for drawing
             mPaint.setColor(Color.argb(255, 255, 255, 255));
@@ -280,6 +281,7 @@ class GameView extends SurfaceView implements Runnable {
 
             // Draw the mBall
             mCanvas.drawRect(mBall.getRect(), mPaint);
+            
 
 
             // Choose the brush color for drawing

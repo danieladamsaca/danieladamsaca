@@ -67,8 +67,8 @@ public class Ball {
     // Speed up by 10%
     // A score of 25 is quite tough on this setting
     public void increaseVelocity(){
-        mXVelocity = mXVelocity + mXVelocity / 20;
-        mYVelocity = mYVelocity + mYVelocity / 20;
+        mXVelocity = mXVelocity + mXVelocity / 10;
+        mYVelocity = mYVelocity + mYVelocity / 10;
     }
 
     public void clearObstacleY(float y){
