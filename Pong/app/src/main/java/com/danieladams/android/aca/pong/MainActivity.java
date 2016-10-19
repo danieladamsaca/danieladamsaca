@@ -7,10 +7,13 @@ import android.view.Display;
 
 public class MainActivity extends Activity {
 
+
+
     // gameView will be the view of the game
     // It will also hold the logic of the game
     // and respond to screen touches as well
     GameView gameView;
+
 
 
     @Override
@@ -31,6 +34,7 @@ public class MainActivity extends Activity {
 
     }
 
+
     // This method executes when the player starts the game
     @Override
     protected void onResume() {
@@ -48,5 +52,6 @@ public class MainActivity extends Activity {
         // Tell the gameView pause method to execute
         gameView.pause();
     }
+
 
 }

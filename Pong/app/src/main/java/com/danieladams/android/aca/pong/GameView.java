@@ -44,6 +44,7 @@ class GameView extends SurfaceView implements Runnable {
     // A Canvas and a Paint object
     Canvas mCanvas;
     Paint mPaint;
+    Paint mPaint2;
 
 
     // This variable tracks the game frame rate
@@ -94,12 +95,18 @@ class GameView extends SurfaceView implements Runnable {
         // Initialize mOurHolder and mPaint objects
         mOurHolder = getHolder();
         mPaint = new Paint();
+       mPaint2 = new Paint();
+
+
 
         // A new mPaddle
         mPaddle = new Paddle(mScreenX, mScreenY);
 
         // Create a mBall
         mBall = new Ball(mScreenX, mScreenY);
+
+
+
 
      /*
     Instantiate our sound pool
@@ -269,7 +276,8 @@ class GameView extends SurfaceView implements Runnable {
             mCanvas = mOurHolder.lockCanvas();
 
             // Draw the background color
-            mCanvas.drawColor(Color.argb(255, 255, 65, 182));
+            mCanvas.drawColor(Color.argb(255, 26, 128, 182));
+
 
 
             // Choose the brush color for drawing
@@ -280,12 +288,13 @@ class GameView extends SurfaceView implements Runnable {
             mCanvas.drawRect(mPaddle.getRect(), mPaint);
 
             // Draw the mBall
-            mCanvas.drawRect(mBall.getRect(), mPaint);
+            mCanvas.drawRect(mBall.getRect(), mPaint2);
             
 
 
             // Choose the brush color for drawing
             mPaint.setColor(Color.argb(255, 0, 0, 255));
+            mPaint2.setColor(Color.argb(255,255,85,150));
 
             // Draw the mScore
             mPaint.setTextSize(40);

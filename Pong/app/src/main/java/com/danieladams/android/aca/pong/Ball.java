@@ -16,6 +16,7 @@ public class Ball {
     private float mBallWidth;
     private float mBallHeight;
 
+
     public Ball(int screenX, int screenY){
 
         // Make the mBall size relative to the screen resolution
