@@ -33,14 +33,4 @@
         app:srcCompat="@drawable/ic_add_white_24dp"
         app:backgroundTint="?attr/actionModeSplitBackground"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:id="@+id/fab2"/>
-
 </android.support.design.widget.CoordinatorLayout>

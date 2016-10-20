@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         ListView listNote = (ListView) findViewById(R.id.listView);
         listNote.setAdapter(mNoteAdapter);
 
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
         listNote.setLongClickable(true);
         listNote.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){

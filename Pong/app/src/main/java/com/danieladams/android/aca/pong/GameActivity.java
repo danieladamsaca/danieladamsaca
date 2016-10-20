@@ -1,33 +1,26 @@
 package com.danieladams.android.aca.pong;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
+import android.graphics.Point;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
+import android.view.Display;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+/**
+ * Created by danieladams on 10/20/16.
+ */
 
-    private ImageButton mButtonPlay;
+public class GameActivity extends Activity{
 
-    // gameView will be the view of the game
-    // It will also hold the logic of the game
-    // and respond to screen touches as well
     GameView gameView;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        mButtonPlay = (ImageButton) findViewById(R.id.buttonPlay);
-        mButtonPlay.setOnClickListener(this);
 
-       /* // Get a Display object to access screen details
+
+        // Get a Display object to access screen details
         Display display = getWindowManager().getDefaultDisplay();
 
         // Load the resolution into a Point object
@@ -36,17 +29,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         // Initialize gameView and set it as the view
         gameView = new GameView(this);
-        setContentView(gameView);*/
+        setContentView(gameView);
+
 
 
     }
-@Override
-    public void onClick(View v){
-    startActivity(new Intent(this, GameActivity.class));
-
-}
-
- /*   // This method executes when the player starts the game
+    // This method executes when the player starts the game
     @Override
     protected void onResume() {
         super.onResume();
@@ -64,5 +52,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
         gameView.pause();
     }
 
-*/
+
 }
+

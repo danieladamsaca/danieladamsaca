@@ -3,12 +3,18 @@ package com.danieladams.android.aca.notetoself2;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import static com.danieladams.android.aca.notetoself2.R.id.photo;
 
 /**
  * Created by danieladams on 9/28/16.
@@ -16,6 +22,8 @@ import android.widget.EditText;
 
 public class DialogNewNote extends DialogFragment {
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private ImageView mPhoto;
 
 
     @Override
@@ -33,6 +41,10 @@ public class DialogNewNote extends DialogFragment {
         final CheckBox checkBoxImportant = (CheckBox) dialogView.findViewById(R.id.checkBoxImportant);
         Button btnCancel = (Button) dialogView.findViewById(R.id.btnCancel);
         Button btnOK = (Button) dialogView.findViewById(R.id.btnOK);
+        Button btnCapture = (Button) dialogView.findViewById(R.id.btnCapture);
+        ImageView mPhoto = (ImageView) dialogView.findViewById(photo);
+
+
 
 
 
@@ -45,6 +57,19 @@ public class DialogNewNote extends DialogFragment {
                 dismiss();
             }
         });
+
+        btnCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+
+
+
+            }
+
+        });
+
 
         //Handle the OK Button
         btnOK.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +95,19 @@ public class DialogNewNote extends DialogFragment {
                 dismiss();
             }
         });
+
         return builder.create();
 
 
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode == REQUEST_IMAGE_CAPTURE){
+            Bundle extras = data.getExtras();
+            Bitmap photo = (Bitmap) extras.get("data");
+            mPhoto.setImageBitmap(photo);
+        }
+
+    }
+
 }

@@ -18,6 +18,9 @@ import android.view.SurfaceView;
 
 import java.io.IOException;
 
+import static android.R.attr.x;
+import static android.R.attr.y;
+
 /**
  * Created by danieladams on 10/4/16.
  */
@@ -45,6 +48,7 @@ class GameView extends SurfaceView implements Runnable {
     Canvas mCanvas;
     Paint mPaint;
     Paint mPaint2;
+    Paint mPaint3;
 
 
     // This variable tracks the game frame rate
@@ -80,7 +84,7 @@ class GameView extends SurfaceView implements Runnable {
   This custom constructor runs
     */
 
-    public GameView(Context context, int x, int y) {
+    public GameView(Context context) {
 
     /*
     The next line of code asks the
@@ -96,6 +100,7 @@ class GameView extends SurfaceView implements Runnable {
         mOurHolder = getHolder();
         mPaint = new Paint();
        mPaint2 = new Paint();
+        mPaint3 = new Paint();
 
 
 
@@ -276,7 +281,7 @@ class GameView extends SurfaceView implements Runnable {
             mCanvas = mOurHolder.lockCanvas();
 
             // Draw the background color
-            mCanvas.drawColor(Color.argb(255, 26, 128, 182));
+            mCanvas.drawColor(Color.BLACK);
 
 
 
@@ -285,16 +290,18 @@ class GameView extends SurfaceView implements Runnable {
 
 
             // Draw the mPaddle
-            mCanvas.drawRect(mPaddle.getRect(), mPaint);
+            mCanvas.drawRect(mPaddle.getRect(), mPaint3);
 
             // Draw the mBall
             mCanvas.drawRect(mBall.getRect(), mPaint2);
-            
+
+
 
 
             // Choose the brush color for drawing
             mPaint.setColor(Color.argb(255, 0, 0, 255));
             mPaint2.setColor(Color.argb(255,255,85,150));
+            mPaint3.setColor(Color.CYAN);
 
             // Draw the mScore
             mPaint.setTextSize(40);

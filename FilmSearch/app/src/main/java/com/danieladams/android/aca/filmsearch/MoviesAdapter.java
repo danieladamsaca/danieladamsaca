@@ -17,20 +17,13 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
-    private OnEntryClickListener mOnEntryClickListener;
+
 
     private List<Movie> mMovieList;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public interface OnEntryClickListener{
-        void onEntryClick(View view, int position);
-    }
 
-    public void setOnEntryClickListener(OnEntryClickListener onEntryClickListener){
-        mOnEntryClickListener = onEntryClickListener;
-
-    }
 
     public MoviesAdapter(Context context) {
         this.mContext = context;

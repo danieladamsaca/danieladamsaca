@@ -59,4 +59,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="66dp" />
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:src="@mipmap/ic_launcher"
+        android:layout_above="@+id/btnOK"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp"/>
+
 </RelativeLayout>
