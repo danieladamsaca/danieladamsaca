@@ -32,6 +32,6 @@ public class MovieDetails extends AppCompatActivity {
         Picasso.with(mContext)
                 .load(movie.getPoster())
                 .placeholder(R.color.colorAccent)
-                .into(holder.imageView);
+                .into(holder.imageView2);
     }
 }

@@ -12,11 +12,13 @@ import android.widget.Toast;
 public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
     public ImageView imageView;
+    public ImageView imageView2;
 
 
     public MovieViewHolder(View itemView) {
         super(itemView);
         imageView = (ImageView) itemView.findViewById(R.id.imageView);
+        imageView2 = (ImageView) itemView.findViewById(R.id.imageView2);
 
         itemView.setOnClickListener(this);
 
