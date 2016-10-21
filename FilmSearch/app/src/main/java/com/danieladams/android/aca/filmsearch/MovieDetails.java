@@ -15,7 +15,17 @@ public class MovieDetails extends AppCompatActivity {
 
 
 
+  /*  OkHttpClient client = new OkHttpClient();
 
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType, "{}");
+    Request request = new Request.Builder(this)
+            .url("https://api.themoviedb.org/3/movie/%7Bmovie_id%7D?language=en-US&api_key=%3C%3Capi_key%3E%3E")
+            .get()
+            .addHeader("content-type", "application/json")
+            .build();
+
+    Response response = client.newCall(request).execute();*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
