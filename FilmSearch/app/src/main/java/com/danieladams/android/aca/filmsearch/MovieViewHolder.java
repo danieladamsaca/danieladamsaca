@@ -3,13 +3,12 @@ package com.danieladams.android.aca.filmsearch;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 /**
  * Created by danieladams on 10/17/16.
  */
 
-public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+public class MovieViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener */ {
 
     public ImageView imageView;
     public ImageView imageView2;
@@ -20,11 +19,11 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
         imageView = (ImageView) itemView.findViewById(R.id.imageView);
         imageView2 = (ImageView) itemView.findViewById(R.id.imageView2);
 
-        itemView.setOnClickListener(this);
+        //itemView.setOnClickListener(this);
 
     }
 
-    @Override
+  /*  @Override
     public void onClick(View view) {
 
 
@@ -34,7 +33,7 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
         //startActivity(new Intent(this, MovieDetails.class));
 
 
-    }
+    }*/
 
 }
 

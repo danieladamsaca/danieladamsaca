@@ -1,5 +1,7 @@
 package com.danieladams.android.aca.filmsearch;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -59,11 +61,21 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(recyclerView);
 
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+            @Override public void onItemClick(View view, int position) {
+                final Intent intent= new Intent(this, MovieDetails.class);
+                //startActivity(new Intent(this,MovieDetails.class));
+                    }
+
+            @Override public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
 
 
 
-
-         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mMoviesAdapter = new MoviesAdapter(this);
         mRecyclerView.setAdapter(mMoviesAdapter);
         List<Movie> movies = new ArrayList<>();
