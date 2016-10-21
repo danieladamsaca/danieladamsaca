@@ -12,6 +12,7 @@ public class Movie {
 
     public static final String TMDB_IMAGE_PATH = "http://image.tmdb.org/t/p/w500";
 
+
     private String mTitle;
     @SerializedName("poster_path")
     private String mPoster;

@@ -25,6 +25,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
 
 
+
+
     public MoviesAdapter(Context context) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
@@ -34,6 +36,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.row_movie, parent, false);
         MovieViewHolder viewHolder = new MovieViewHolder(view);
+
+
+
         return viewHolder;
     }
     @Override

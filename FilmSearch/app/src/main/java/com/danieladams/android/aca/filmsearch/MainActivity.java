@@ -32,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MoviesAdapter mMoviesAdapter;
 
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient mClient;
+
 
 
     @Override
@@ -56,11 +58,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mRecyclerView = (RecyclerView) findViewById(recyclerView);
-        
 
 
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+
+         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mMoviesAdapter = new MoviesAdapter(this);
         mRecyclerView.setAdapter(mMoviesAdapter);
         List<Movie> movies = new ArrayList<>();
