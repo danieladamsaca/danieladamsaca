@@ -99,7 +99,7 @@ class GameView extends SurfaceView implements Runnable {
         // Initialize mOurHolder and mPaint objects
         mOurHolder = getHolder();
         mPaint = new Paint();
-       mPaint2 = new Paint();
+        mPaint2 = new Paint();
         mPaint3 = new Paint();
 
 
@@ -281,30 +281,24 @@ class GameView extends SurfaceView implements Runnable {
             mCanvas = mOurHolder.lockCanvas();
 
             // Draw the background color
-            mCanvas.drawColor(Color.BLACK);
-
-
+            mCanvas.drawColor(Color.argb(255, 26, 128, 182));
 
             // Choose the brush color for drawing
             mPaint.setColor(Color.argb(255, 255, 255, 255));
 
 
             // Draw the mPaddle
-            mCanvas.drawRect(mPaddle.getRect(), mPaint3);
+            mCanvas.drawRect(mPaddle.getRect(), mPaint);
 
             // Draw the mBall
-            mCanvas.drawRect(mBall.getRect(), mPaint2);
-
-
+            mCanvas.drawRect(mBall.getRect(), mPaint);
 
 
             // Choose the brush color for drawing
-            mPaint.setColor(Color.argb(255, 0, 0, 255));
-            mPaint2.setColor(Color.argb(255,255,85,150));
-            mPaint3.setColor(Color.CYAN);
+            mPaint.setColor(Color.argb(255, 150, 85, 255));
 
             // Draw the mScore
-            mPaint.setTextSize(40);
+            mPaint.setTextSize(60);
             mCanvas.drawText("Score: " + mScore + "   Lives: " + mLives, 10, 50, mPaint);
 
             // Draw everything to the screen
@@ -312,6 +306,7 @@ class GameView extends SurfaceView implements Runnable {
         }
 
     }
+
 
     // If the Activity is paused/stopped
     // shutdown our thread.

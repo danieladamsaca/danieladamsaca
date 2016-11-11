@@ -61,6 +61,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         this.mMovieList.addAll(movieList);
         // The adapter needs to know that the data has changed.
         // If we don't call this, app will crash.
+
         notifyDataSetChanged();
     }
     public List<Movie> getMovieList(){

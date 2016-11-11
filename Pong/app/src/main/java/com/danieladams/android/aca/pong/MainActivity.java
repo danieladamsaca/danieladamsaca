@@ -11,10 +11,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     private ImageButton mButtonPlay;
 
-    // gameView will be the view of the game
-    // It will also hold the logic of the game
-    // and respond to screen touches as well
-    GameView gameView;
 
 
 

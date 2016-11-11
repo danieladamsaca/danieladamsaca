@@ -9,7 +9,7 @@ import android.view.Display;
  * Created by danieladams on 10/20/16.
  */
 
-public class GameActivity extends Activity{
+public class GameActivity extends Activity {
 
     GameView gameView;
 

@@ -1,6 +1,7 @@
 package com.danieladams.android.aca.filmsearch;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.method.MovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Interpolator;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -28,12 +31,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.view.View.Y;
+import static com.danieladams.android.aca.filmsearch.R.id.info;
 import static com.danieladams.android.aca.filmsearch.R.id.recyclerView;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MoviesAdapter mMoviesAdapter;
-
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -61,13 +65,15 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(recyclerView);
 
-        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-            @Override public void onItemClick(View view, int position) {
-                final Intent intent= new Intent(this, MovieDetails.class);
-                //startActivity(new Intent(this,MovieDetails.class));
+
+        mRecyclerView.addOnItemTouchListener( new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+
+
                     }
 
-            @Override public void onLongItemClick(View view, int position) {
+                    @Override public void onLongItemClick(View view, int position) {
 
                     }
                 })
